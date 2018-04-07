@@ -1,5 +1,5 @@
 ---
-title: API driven learning
+title: How to make a new page on Marble Seeds Admin
 date: Wed Jun 01 2016 10:12:39 GMT-0500 (CDT)
 slug: new-page
 description: Hoy podemos aprender los conceptos importantes de cada industria leyendo la documentación del API de los grandes del mercado.
@@ -12,9 +12,9 @@ GET STARTED
 
 # How to make a new page on Marble Seeds Admin
 
-Before you start make sure that you have admin running, you have created a admin and you are logged in, for this check out ReadMe
+Before you start make sure that you have admin running, you have created a admin and you are logged in, for this check out [ReadMe](https://github.com/latteware/marble-seed/blob/master/README.md)
 
-The structure UI of marble seed is divided in two main parts, from left side a sidebar and right side the section of pages. Each page (component) extends to pageComponent or listPageComponent according to the required functionality
+The structure UI of marble seed is divided in two main parts, from left side a sidebar and right side the section of pages. Each page (component) extends to [pageComponent](/documentation/page-component) or [listPageComponent](/documentation/list-page-component) according to the required functionality
 
 to create a page requires certain methods and configuration
 
@@ -57,9 +57,9 @@ Global method that exports component information, receives as parameters an obje
 
 1.- file create in folder `admin/frontend/pages/users`
 
-Each page will extend to the component pageComponent or listPageComponent according to the component you require
+Each page will extend to the component [pageComponent](/documentation/page-component) or [listPageComponent](/documentation/list-page-component) according to the component you require
 
-for this example the name is UserDetails. this structure is:
+for this example the name is UserList. this structure is:
 
 ```javascript
 // import libraries

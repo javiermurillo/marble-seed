@@ -18,17 +18,33 @@ var paperpress = new Paperpress({
 })
 paperpress.load()
 
-app.get('/doc', function (req, res) {
-  var docs = paperpress.getCollection('doc')
+app.get('/documentation', function (req, res) {
+  var docs = []
+  var getStarted = []
+  var runningProduction = []
+  var files = paperpress.getCollections(['get-started', 'docs', 'running-and-production'])
 
-  res.send(docs)
+  files.find((item, i) => {
+    if (item.type === 'docs') {
+      docs.push(item)
+    } else if (item.type === 'get-started') {
+      getStarted.push(item)
+    } else if (item.type === 'running-and-production') {
+      runningProduction.push(item)
+    }
+  })
+  res.render('home', {
+    docs: docs,
+    getStarted: getStarted,
+    runningProduction: runningProduction
+  })
 })
 
-app.get('/doc/:doc', function (req, res) {
-  var docs = paperpress.getCollection('doc')
-  var doc = _.findWhere(docs, {slug: req.params.doc})
-  // console.log('doc =======> ' + JSON.stringify(doc))
-  res.render({doc: doc})
+app.get('/documentation/:doc', function (req, res) {
+  var files = paperpress.getCollections(['get-started', 'docs'])
+  var file = _.findWhere(files, {slug: req.params.doc})
+
+  res.render('documentation', {file})
 })
 
 app.set('views', path.resolve('./app/views'))
